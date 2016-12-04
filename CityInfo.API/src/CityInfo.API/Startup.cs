@@ -23,7 +23,7 @@ namespace CityInfo.API
 			var builder = new ConfigurationBuilder()
 			.SetBasePath(environment.ContentRootPath)
 			.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-			.AddJsonFile($"appsettings.{environment.EnvironmentName}.json", optional: false, reloadOnChange: true);
+			.AddJsonFile($"appsettings.{environment.EnvironmentName}.json", optional: true, reloadOnChange: true);
 			Configuration = builder.Build();
 		}
 
@@ -31,7 +31,8 @@ namespace CityInfo.API
 		// For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddMvc()
+			services
+				.AddMvc()
 					.AddMvcOptions(o => o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
 			var connectionString = Configuration["ConnectionStrings:DBConnection"];
