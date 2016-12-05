@@ -1,4 +1,5 @@
-FROM microsoft/dotnet:1.0.0-preview2-sdk
+FROM microsoft/aspnetcore:1.1.0
+
 RUN mkdir /app
 COPY . /app
 
