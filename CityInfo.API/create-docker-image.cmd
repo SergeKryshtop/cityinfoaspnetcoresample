@@ -1,3 +1,3 @@
-docker build -t cityinfoapi:aspnetcore .
+docker build -t cityinfoapi:latest .
 
 pause

@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-test",
+	"version": "1.0.0-release",
 	"dependencies": {
 		"Microsoft.NETCore.App": {
 			"version": "1.0.1",
@@ -9,19 +9,18 @@
 		"Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
 		"Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
 		"Microsoft.Extensions.Logging.Console": "1.0.0",
+		"Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
 		"Microsoft.AspNetCore.Mvc": "1.1.0",
 		"Microsoft.AspNetCore.Mvc.Formatters.Xml": "1.0.1",
 		"Microsoft.Extensions.Logging.Debug": "1.0.0",
 		"NLog.Extensions.Logging": "1.0.0-rtm-alpha4",
-			"Microsoft.Extensions.Configuration.Json": "1.0.0",
-    "CityInfo.DAL": "1.0.0-*",
-    "AutoMapper": "5.1.1"
+		"Microsoft.Extensions.Configuration.Json": "1.0.0",
+		"CityInfo.DAL": "1.0.0-*",
+		"AutoMapper": "5.1.1"
 	},
-
 	"tools": {
 		"Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
 	},
-
 	"frameworks": {
 		"netcoreapp1.0": {
 			"imports": [
@@ -30,27 +29,23 @@
 			]
 		}
 	},
-
 	"buildOptions": {
 		"emitEntryPoint": true,
-		"preserveCompilationContext": true
+		"preserveCompilationContext": true,
+		"debugType": "portable"
 	},
-
 	"runtimeOptions": {
 		"configProperties": {
 			"System.GC.Server": true
 		}
 	},
-
 	"publishOptions": {
-			"include": [
-				"wwwroot",
-				"web.config",
-				"appsettings.json",
-				"appsettings.Production.json"
-			]
+		"include": [
+			"web.config",
+			"appsettings.json",
+			".dockerignore"
+		]
 	},
-
 	"scripts": {
 		"postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
 	}

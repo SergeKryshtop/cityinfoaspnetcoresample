@@ -1,17 +1,16 @@
-FROM microsoft/aspnetcore:1.1.0
+FROM microsoft/aspnetcore:1.0.1
 
-RUN mkdir /app
-COPY . /app
+ARG source=publish
+COPY $source /app
+WORKDIR /app
 
-WORKDIR /app/src/CityInfo.DAL
-RUN ["dotnet", "restore"]
-
-WORKDIR /app/src/CityInfo.API
-RUN ["dotnet", "restore"]
-RUN ["dotnet", "build"]
-
-EXPOSE 5000/tcp
+ENV ConnectionStrings:DBConnection="Data Source=.\mssqlserver2014;Initial Catalog=CityInfo;Integrated Security=True"
 ENV ASPNETCORE_URLS http://*:5000
+EXPOSE 5000
 
-ENTRYPOINT ["dotnet", "run"]
+ENTRYPOINT ["dotnet", "CityInfo.API.dll"]
+ 
+
+
+
 
