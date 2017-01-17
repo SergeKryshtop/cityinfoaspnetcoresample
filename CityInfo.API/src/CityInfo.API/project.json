@@ -1,5 +1,6 @@
 {
-	"version": "1.0.0-release",
+    "copyright": "",
+    "version": "1.0.*",
 	"dependencies": {
 		"Microsoft.NETCore.App": {
 			"version": "1.0.1",
