@@ -17,7 +17,7 @@ namespace CityInfo.DAL.Repositories
             _logger = new LoggerFactory().CreateLogger<DataStorage>();
             var builder = new DbContextOptionsBuilder<CityInfoContext>();
 
-            _logger.LogInformation("Connection string: " + connectionString);
+            _logger.LogWarning("Connection string: " + connectionString);
             
 			builder.UseSqlServer(connectionString);
 
