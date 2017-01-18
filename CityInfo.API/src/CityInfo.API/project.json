@@ -43,7 +43,8 @@
 	"publishOptions": {
 		"include": [
 			"web.config",
-			"appsettings.json",
+        "appsettings.json",
+        "nlog.config",
 			".dockerignore"
 		]
 	},
