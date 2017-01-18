@@ -41,12 +41,12 @@
 		}
 	},
 	"publishOptions": {
-		"include": [
-			"web.config",
+    "include": [
+        "web.config",
         "appsettings.json",
         "nlog.config",
-			".dockerignore"
-		]
+        ".dockerignore"
+    ]
 	},
 	"scripts": {
 		"postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
