@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  cityinfo.api:
+    image: user/cityinfo.api${TAG}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80"
