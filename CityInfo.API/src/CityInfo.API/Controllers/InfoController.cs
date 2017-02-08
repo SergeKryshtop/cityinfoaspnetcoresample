@@ -1,13 +1,12 @@
 ﻿using System.Dynamic;
 using Microsoft.AspNetCore;
 using System.Reflection;
-using System.Web.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CityInfo.API.Controllers
 {
 	[Route("api/info")]
-	public class InfoController : ApiController
+	public class InfoController : Controller
 	{
 		[HttpGet]
 		public IActionResult GetAssembyInformaion()
