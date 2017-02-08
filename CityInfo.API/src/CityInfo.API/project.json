@@ -31,7 +31,7 @@
 			}
 	},
 	"runtimes": {
-		"win10-x64": {}, /* one or more RIDs */
+		"win10-x64": {},
 		"osx.10.10-x64": {}
 	},
 	"buildOptions": {
