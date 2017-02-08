@@ -47,8 +47,7 @@ cat <<EOF > $JSONFILE
     "template": {
       "metadata": {
         "labels": {
-          "app": "cityinfoapi-$ENVNAME",
-    "version": "$APP_VERSION"
+          "app": "cityinfoapi-$ENVNAME"
         }
       },
       "spec": {
