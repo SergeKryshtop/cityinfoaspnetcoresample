@@ -1,4 +1,4 @@
-FROM microsoft/aspnetcore:1.0
+FROM microsoft/aspnetcore:1.0.3
 
 ARG source=publish
 COPY $source /app
