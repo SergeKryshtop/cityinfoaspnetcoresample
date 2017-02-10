@@ -1,6 +1,6 @@
 {
 	"authors": [ "Sergii Kryshtop" ],
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"description": "Demo NETCore Api",
 	"dependencies": {
 		"Microsoft.NETCore.App": {

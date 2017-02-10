@@ -13,15 +13,13 @@ namespace CityInfo.API.Controllers
 		{
 			dynamic assemblyInformation = new ExpandoObject();
 			var assembly = typeof(InfoController).GetTypeInfo().Assembly;
+			var app = Microsoft.Extensions.PlatformAbstractions.PlatformServices.Default.Application;
 
-			assemblyInformation.AssemblyVersion =
-					Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyVersionAttribute>().Version;
-
-			assemblyInformation.Product = assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;
+			assemblyInformation.Product = app.ApplicationName;
 			assemblyInformation.Version =
-				Microsoft.Extensions.PlatformAbstractions.PlatformServices.Default.Application.ApplicationVersion;
+				app.ApplicationVersion;
 
-
+			
 
 			return Ok(assemblyInformation);
 		}
