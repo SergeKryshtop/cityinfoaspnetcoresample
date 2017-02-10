@@ -17,11 +17,15 @@ namespace CityInfo.DAL.Repositories
 			_logger = logger;
 			var builder = new DbContextOptionsBuilder<CityInfoContext>();
 
-			_logger.LogInformation("Connection string: " + connectionString);
+			_logger.LogInformation("DataStorage.ConnectionString: " + connectionString);
 			
 			builder.UseSqlServer(connectionString);
 
+	
 			_context = new CityInfoContext(builder.Options);
+
+			_logger.LogInformation("DataStorage Options: " + builder.Options);
+
 			_context.EnsureSeedDataForContext();
 		}
 
