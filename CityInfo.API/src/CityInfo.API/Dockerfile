@@ -8,4 +8,6 @@ ENV SQLCONNSTR_DBConnection="Server=tcp:mdlr-sql-01.database.windows.net;Databas
 
 EXPOSE 80
 VOLUME /logs:/logs
+
 COPY $source .
+RUN mkdir logs
