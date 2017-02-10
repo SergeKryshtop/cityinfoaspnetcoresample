@@ -1,32 +1,30 @@
 {
-	"copyright": "",
-	"version": "1.0.0-*",
+	"authors": [ "Sergii Kryshtop" ],
+	"version": "1.2.0",
+	"description": "Demo NETCore Api",
 	"dependencies": {
+		"Microsoft.NETCore.App": {
+			"version": "1.0.1",
+			"type": "platform"
+		},
 		"NLog.Extensions.Logging": "1.0.0-rtm-alpha4",
-		"Microsoft.AspNetCore.Diagnostics": "1.1.0",
-		"Microsoft.AspNetCore.Mvc": "1.1.1",
-		"Microsoft.AspNetCore.Mvc.Formatters.Xml": "1.1.1",
-		"Microsoft.AspNetCore.Server.IISIntegration": "1.1.0",
-		"Microsoft.AspNetCore.Server.Kestrel": "1.1.0",
-		"Microsoft.Extensions.Configuration.EnvironmentVariables": "1.1.0",
-		"Microsoft.Extensions.Configuration.Json": "1.1.0",
-		"Microsoft.Extensions.Logging.Console": "1.1.0",
-		"Microsoft.Extensions.Logging.Debug": "1.1.0",
-		"CityInfo.DAL": "1.0.0-release",
+		"Microsoft.AspNetCore.Diagnostics": "1.0.0",
+		"Microsoft.AspNetCore.Mvc": "1.0.1",
+		"Microsoft.AspNetCore.Mvc.Formatters.Xml": "1.0.1",
+		"Microsoft.AspNetCore.Server.IISIntegration": "1.0.1",
+		"Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
+		"Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.1",
+		"Microsoft.Extensions.Configuration.Json": "1.0.1",
+		"Microsoft.Extensions.Logging.Console": "1.0.1",
+		"Microsoft.Extensions.Logging.Debug": "1.0.1",
 		"AutoMapper": "5.2.0",
-		"Microsoft.NETCore.App": "1.1.0"
+		"CityInfo.DAL": "1.0.0"
 	},
 	"tools": {
 		"Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
 	},
 	"frameworks": {
-		"netcoreapp1.1": {
-			"dependencies": {
-				"Microsoft.NETCore.App": {
-					"type": "platform",
-					"version": "1.1.0"
-				}
-			},
+		"netcoreapp1.0": {
 			"imports": [
 				"dotnet5.6",
 				"portable-net45+win8"
@@ -34,8 +32,7 @@
 		}
 	},
 	"runtimes": {
-		"win10-x64": {},
-		"osx.10.10-x64": {}
+
 	},
 	"buildOptions": {
 		"emitEntryPoint": true,

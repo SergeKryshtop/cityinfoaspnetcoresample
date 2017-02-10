@@ -12,16 +12,16 @@ namespace CityInfo.API.Controllers
 		public IActionResult GetAssembyInformaion()
 		{
 			dynamic assemblyInformation = new ExpandoObject();
-			var assembly = typeof(Startup).GetTypeInfo().Assembly;
+			var assembly = typeof(InfoController).GetTypeInfo().Assembly;
 
-			assemblyInformation.AssemblyInformationalVersion =
-					Microsoft.Extensions.PlatformAbstractions.PlatformServices.Default.Application.ApplicationVersion;
+			assemblyInformation.AssemblyVersion =
+					Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyVersionAttribute>().Version;
 
-			assemblyInformation.Name = assembly.GetName().Name;
-			assemblyInformation.AssemblyVersion = assembly.GetName().Version.ToString();
+			assemblyInformation.Product = assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;
+			assemblyInformation.Version =
+				Microsoft.Extensions.PlatformAbstractions.PlatformServices.Default.Application.ApplicationVersion;
 
-			assemblyInformation.AssemblyFileVersion = assembly.GetCustomAttribute<AssemblyFileVersionAttribute>()
-					.Version;
+
 
 			return Ok(assemblyInformation);
 		}
