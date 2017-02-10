@@ -18,7 +18,8 @@
 		"Microsoft.Extensions.Logging.Console": "1.0.1",
 		"Microsoft.Extensions.Logging.Debug": "1.0.1",
 		"AutoMapper": "5.2.0",
-		"CityInfo.DAL": "1.0.0"
+			"CityInfo.DAL": "1.0.0",
+			"NLog.Web.AspNetCore": "4.3.0"
 	},
 	"tools": {
 		"Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"

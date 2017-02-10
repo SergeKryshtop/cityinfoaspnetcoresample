@@ -16,9 +16,9 @@ namespace CityInfo.API
 {
 	public class Startup
 	{
-	    private ILogger _logger;
+		private readonly ILogger _logger;
 
-        public static IConfigurationRoot Configuration;
+		public static IConfigurationRoot Configuration;
 
 		public Startup(IHostingEnvironment environment, ILoggerFactory loggerFactory)
 		{
@@ -30,9 +30,12 @@ namespace CityInfo.API
 
 			Configuration = builder.Build();
 
-            loggerFactory.AddConsole();
-            _logger = loggerFactory.CreateLogger<Startup>();
-            
+			environment.ConfigureNLog("nlog.config");
+			loggerFactory.AddConsole().AddNLog().AddDebug();
+				
+
+			_logger = loggerFactory.CreateLogger<Startup>();
+
 		}
 
 		// This method gets called by the runtime. Use this method to add services to the container.
@@ -45,9 +48,9 @@ namespace CityInfo.API
 
 			var connectionString = Configuration["ConnectionStrings:DBConnection"];
 
-            _logger.LogInformation("Connection string: " + connectionString);
+			_logger.LogInformation("Connection string: " + connectionString);
 
-            services.AddScoped<IDataStorage, DataStorage>(_ => new DataStorage(connectionString));
+			services.AddScoped<IDataStorage, DataStorage>(_ => new DataStorage(connectionString));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
