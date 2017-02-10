@@ -22,20 +22,17 @@ namespace CityInfo.API
 
 		public Startup(IHostingEnvironment environment, ILoggerFactory loggerFactory)
 		{
+			
 			var builder = new ConfigurationBuilder()
 				.SetBasePath(environment.ContentRootPath)
 				.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
 				.AddJsonFile($"appsettings.{environment.EnvironmentName}.json", optional: true, reloadOnChange: true)
 				.AddEnvironmentVariables();
 
+
 			Configuration = builder.Build();
 
-			environment.ConfigureNLog("nlog.config");
-			loggerFactory.AddConsole().AddNLog().AddDebug();
-				
-
-			_logger = loggerFactory.CreateLogger<Startup>();
-
+			_logger = loggerFactory.CreateLogger("");
 		}
 
 		// This method gets called by the runtime. Use this method to add services to the container.
@@ -48,26 +45,31 @@ namespace CityInfo.API
 
 			var connectionString = Configuration["ConnectionStrings:DBConnection"];
 
+			
 			_logger.LogInformation("Connection string: " + connectionString);
 
-			services.AddScoped<IDataStorage, DataStorage>(_ => new DataStorage(connectionString));
+			services.AddScoped<IDataStorage, DataStorage>(_ => new DataStorage(connectionString, _logger));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 		{
-			loggerFactory.AddConsole();
-			loggerFactory.AddDebug();
-			loggerFactory.AddNLog();
+			env.ConfigureNLog("nlog.config");
 
-			if (env.IsDevelopment())
-			{
-				app.UseDeveloperExceptionPage();
-			}
-			else
-			{
-				app.UseExceptionHandler();
-			}
+		
+			
+			loggerFactory.AddConsole().AddNLog().AddDebug();
+
+			//if (env.IsDevelopment())
+			//{
+			//	app.UseDeveloperExceptionPage();
+			//}
+			//else
+			//{
+			//	app.UseExceptionHandler();
+			//}
+
+			app.UseDeveloperExceptionPage();
 
 			app.UseMvc();
 
