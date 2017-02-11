@@ -19,7 +19,8 @@ namespace CityInfo.API.Controllers
 			assemblyInformation.Version =
 				app.ApplicationVersion;
 
-			
+			assemblyInformation.InformationVersion =
+				assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
 
 			return Ok(assemblyInformation);
 		}
