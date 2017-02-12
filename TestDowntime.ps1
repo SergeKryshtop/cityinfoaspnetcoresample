@@ -6,19 +6,20 @@ Param(
 
 )
 
+echo "Press Esc to exit..."
 
 $continue = $true
+$Host.UI.RawUI.FlushInputBuffer();
+
 while($continue)
 {
 
     if ($Host.UI.RawUI.KeyAvailable)
     {
-        echo "Toggle with Esc";
-        $x =  $Host.UI.RawUI.ReadKey('NoEcho, IncludeKeyDown')
-
-        switch ( $x.key)
+        $x =  $Host.UI.RawUI.ReadKey('NoEcho, IncludeKeyUp')
+        switch ($x.VirtualKeyCode)
         {
-            Esc { $continue = $false }
+            27 { $continue = $false }
         }
     } 
     else
@@ -26,9 +27,9 @@ while($continue)
         $response = Invoke-RestMethod -Uri ($EndpointUri + "/api/info")
         $date = (Get-Date).TimeOfDay;
 
-        Write-Host "[$date] Version: $($response.Version)"
+        Write-Host "[$date] Version: $($response.Version)`tBuild Version: $($response.InformationVersion)"
         
-        sleep 0.5
+        Start-Sleep -MilliSeconds 500 
                
         
     }    
