@@ -85,6 +85,11 @@ kubectl $ACTION -f $JSONFILE
 
 if [ $ACTION == "create" ]
 then
+ if  kubectl get service | grep $APP_NAME 
+ then
+  echo "Service cityinfoapi-$ENVNAME already exists."
+ else
   echo "Creating service..."
   kubectl expose deployment cityinfoapi-$ENVNAME --port=5000 --type=LoadBalancer
+ fi
 fi
